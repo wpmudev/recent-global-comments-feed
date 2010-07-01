@@ -1,0 +1,31 @@
+Plugin Name: Recent Global Comments Feed
+Author: Andrew Billits
+
+Change Log:
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+1.0.5 - 10/13/2009
+----------------------------------------------------------------------
+- Switched user login to display name
+
+1.0.4 - 08/06/2009
+----------------------------------------------------------------------
+- Added ability to specify number of feed items
+
+1.0.3 - 06/19/2009
+----------------------------------------------------------------------
+- Added widget
+
+1.0.2 - 06/01/2009
+----------------------------------------------------------------------
+- Fixed a bug resulting in an invalid feed when no comments are available (props drmike)
+
+1.0.1 - 05/17/2009
+----------------------------------------------------------------------
+- Fixed a feed bug resulting in an error whne using IE
+- Modified rss tags for better compatibility with feed readers
+
+1.0.0 - 04/13/2009
+----------------------------------------------------------------------
+- Initial Release.
