@@ -3,6 +3,10 @@ Authors: Ivan Shaovchev, Andrew Billits (Incsub)
 
 == Changelog ==
 
+= 1.0.6.1 =
+* Fix: 404 header
+* Fix: RSS language
+
 = 1.0.6 =
 * Compatibility update for WordPress 3.1
 * Update notifications scripts added

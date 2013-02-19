@@ -5,7 +5,7 @@ Plugin URI: http://premium.wpmudev.org/project/recent-global-comments-feed
 Description: An RSS feed of all the latest comments from across your entire site.
 Author: Ivan Shaovchev & Andrew Billits (Incsub)
 Author URI: http://ivan.sh
-Version: 1.0.6
+Version: 1.0.6.1
 Network: true
 WDP ID: 71
 */ 
@@ -49,8 +49,9 @@ function recent_global_comments_feed() {
     } else {
         $last_published_post_date_time = time();
     }
-
-    header('Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_option('blog_charset'), true);
+    
+    header( 'HTTP/1.0 200 OK' );
+    header( 'Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_option('blog_charset'), true);
     $more = 1;
 
     echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>'; ?>
@@ -72,7 +73,7 @@ function recent_global_comments_feed() {
         <description><?php bloginfo_rss("description") ?></description>
         <pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', $last_published_post_date_time, false); ?></pubDate>
         <?php the_generator( 'rss2' ); ?>
-        <language><?php echo get_option('rss_language'); ?></language>
+        <language><?php bloginfo_rss( 'language' ); ?></language>
         <?php
         if ( count( $comments ) > 0 ) {
             foreach ($comments as $comment) {
