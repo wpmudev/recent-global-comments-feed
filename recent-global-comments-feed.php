@@ -44,7 +44,7 @@ function recent_global_comments_feed() {
     global $wpdb, $current_site;
     $number = ( empty( $_GET['number'] ) ) ? 25 : intval($_GET['number']);
 
-    $query = $wpdb->prepare("SELECT * FROM " . $wpdb->base_prefix . "site_comments WHERE site_id = %d AND blog_public = '1' AND comment_approved = '1' AND comment_type != 'pingback' ORDER BY comment_date_stamp DESC LIMIT %d", $current_site->id,  . $number);
+    $query = $wpdb->prepare("SELECT * FROM " . $wpdb->base_prefix . "site_comments WHERE site_id = %d AND blog_public = '1' AND comment_approved = '1' AND comment_type != 'pingback' ORDER BY comment_date_stamp DESC LIMIT %d", $current_site->id, $number);
     $comments = $wpdb->get_results( $query, ARRAY_A );
 
     if ( count( $comments ) > 0 ) {
