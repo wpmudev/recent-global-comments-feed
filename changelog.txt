@@ -4,7 +4,8 @@ Authors: Ivan Shaovchev, Andrew Billits (Incsub)
 == Changelog ==
 
 = 1.0.6.2 =
-* Security patch
+* IMPORTANT security update
+* XSS prevention patches
 * Update WPMU DEV Update Notification
 
 = 1.0.6.1 =

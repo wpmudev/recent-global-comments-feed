@@ -3,7 +3,7 @@
 Plugin Name: Recent Global Comments Feed
 Plugin URI: http://premium.wpmudev.org/project/recent-global-comments-feed
 Description: An RSS feed of all the latest comments from across your entire site.
-Author: Ivan Shaovchev & Andrew Billits (Incsub)
+Author: Paul Menard (Incsub), Ivan Shaovchev & Andrew Billits (Incsub)
 Author URI: http://ivan.sh
 Version: 1.0.6.2
 Network: true
@@ -48,7 +48,7 @@ function recent_global_comments_feed() {
     $comments = $wpdb->get_results( $query, ARRAY_A );
 
     if ( count( $comments ) > 0 ) {
-        $last_published_post_date_time = $wpdb->get_var("SELECT comment_date_gmt FROM " . $wpdb->base_prefix . "site_comments WHERE site_id = '" . $current_site->id . "' AND blog_public = '1' AND comment_approved = '1' AND comment_type != 'pingback' ORDER BY comment_date_stamp DESC LIMIT 1");
+        $last_published_post_date_time = $wpdb->get_var($wpdb->prepare("SELECT comment_date_gmt FROM " . $wpdb->base_prefix . "site_comments WHERE site_id = %d AND blog_public = %s AND comment_approved = %s AND comment_type != %s ORDER BY comment_date_stamp DESC LIMIT %d",  $current_site->id, '1', '1', 'pingback', 1));
     } else {
         $last_published_post_date_time = time();
     }
@@ -80,9 +80,9 @@ function recent_global_comments_feed() {
         <?php
         if ( count( $comments ) > 0 ) {
             foreach ($comments as $comment) {
-                $post_title = $wpdb->get_var("SELECT post_title FROM " . $wpdb->base_prefix . $comment['blog_id'] . "_posts WHERE ID = '" . $comment['comment_post_id'] . "'");
+                $post_title = $wpdb->get_var($wpdb->prepare("SELECT post_title FROM " . $wpdb->base_prefix . $comment['blog_id'] . "_posts WHERE ID = %d", $comment['comment_post_id']));
                 if ( !empty( $comment['comment_author_user_id'] ) && $comment['comment_author_user_id'] > 0 ) {
-                    $author_display_name = $wpdb->get_var("SELECT display_name FROM " . $wpdb->base_prefix . "users WHERE ID = '" . $comment['comment_author_user_id'] . "'");
+                    $author_display_name = $wpdb->get_var($wpdb->prepare("SELECT display_name FROM " . $wpdb->base_prefix . "users WHERE ID = %d", $comment['comment_author_user_id']));
                 }
                 if ( !empty( $author_user_login ) ) {
                     $comment_author = $author_display_name;
