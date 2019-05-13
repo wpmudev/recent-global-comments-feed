@@ -2,6 +2,12 @@
 
 **INACTIVE NOTICE: This plugin is unsupported by WPMUDEV, we've published it here for those technical types who might want to fork and maintain it for their needs.**
 
+## Translations
+
+Translation files can be found at https://github.com/wpmudev/translations
+
+## Usage 
+
 Want an RSS feed of all the comments on your entire network - simply, efficiently and quickly? This simple but powerful plugin allows you to do just that:
 
 *   Creates a Comment feed URL for your entire network which anyone can subscribe to
